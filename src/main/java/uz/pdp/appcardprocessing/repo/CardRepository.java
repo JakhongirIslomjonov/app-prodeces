@@ -6,4 +6,5 @@ import uz.pdp.appcardprocessing.entity.Card;
 import java.util.UUID;
 
 public interface CardRepository extends JpaRepository<Card, UUID> {
+
 }
