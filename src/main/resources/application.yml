@@ -1,13 +1,14 @@
 logging:
     config: classpath:log4j2.xml
+
 spring:
     application:
         name: app-card-processing
     datasource:
         driverClassName: org.postgresql.Driver
-        password: 0095
         url: jdbc:postgresql://localhost:5432/postgres
         username: postgres
+        password: 0095
     jpa:
         hibernate:
             ddl-auto: none
@@ -17,5 +18,9 @@ spring:
         show-sql: true
     liquibase:
         change-log: classpath:db/changelog/db.changelog-master.yaml
+    messages:
+        basename: messages
+        encoding: UTF-8
+
 jwt:
     secretKey: ${JWT_KEY}
