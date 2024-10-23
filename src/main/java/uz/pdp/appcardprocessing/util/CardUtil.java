@@ -53,6 +53,7 @@ public class CardUtil {
     @Scheduled(cron = "0 0 1 * * *")
     public void clearCache() {}
 
+
     public long sumWithCurrencyRate(Card card, DebitRequestDTO transactionDto, long currencyRate) {
         long sum;
         if (transactionDto.currency().equals(Currency.USD)) {

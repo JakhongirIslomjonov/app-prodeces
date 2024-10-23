@@ -1,31 +1,23 @@
-# docker-compose.yml
-version: '3.8'
-
 services:
-  spring-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: springboot-app
+
+  card-processing-service:
+    image: anasortukov/card-processing-service
     ports:
       - "8080:8080"
     depends_on:
       - postgres-db
-    networks:
-      - backend-network
+    container_name: card-processing-service
 
   postgres-db:
     image: postgres
-    container_name: my-postgres-db
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=0095
-      - POSTGRES_DB=postgres
+      POSTGRES_DB: card_processing_service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 0095
     ports:
       - "5434:5432"
-    networks:
-      - backend-network
 
-networks:
-  backend-network:
-    driver: bridge
+  redis-db:
+    image: redis
+    ports:
+      - "6400:6379"

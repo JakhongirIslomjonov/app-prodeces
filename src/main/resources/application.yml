@@ -1,26 +1,23 @@
-logging:
-    config: classpath:log4j2.xml
-
 spring:
-    application:
-        name: app-card-processing
-    datasource:
-        driverClassName: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/postgres
-        username: postgres
-        password: 0095
-    jpa:
-        hibernate:
-            ddl-auto: none
-        properties:
-            hibernate:
-                format_sql: true
-        show-sql: true
-    liquibase:
-        change-log: classpath:db/changelog/db.changelog-master.yaml
-    messages:
-        basename: messages
-        encoding: UTF-8
-
+  application:
+    name: app-card-processing
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: 6379
 jwt:
-    secretKey: ${JWT_KEY}
+  secretKey: ${JWT_KEY}
+
+REDIS_HOST: localhost
+JWT_KEY: "jahongir dev"
+DATABASE_PASSWORD: 0095
+DATABASE_USERNAME: postgres
+DATABASE_URL: jdbc:postgresql://localhost:5432/postgres
