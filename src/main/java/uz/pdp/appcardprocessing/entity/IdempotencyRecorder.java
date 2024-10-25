@@ -20,7 +20,10 @@ public class IdempotencyRecorder {
     private UUID cardId;
     private UUID transactionId;
 
-
+    public IdempotencyRecorder(UUID idempotencyKey, UUID cardId) {
+        this.idempotencyKey = idempotencyKey;
+        this.cardId = cardId;
+    }
 
 
 
